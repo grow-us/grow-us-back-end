@@ -5,11 +5,11 @@ require("dotenv").config();
 
 
 const pool = mysql.createPool({
-  host: process.env.host,
-  user: process.env.user,
-  port: process.env.port,
-  password: process.env.password,
-  database: process.env.database,
+  host: process.env.HOST,
+  user: process.env.USER,
+  port: process.env.DB_PORT,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
   ssl: {
     rejectUnauthorized: true,
     ca: fs.readFileSync("./ca.pem"),

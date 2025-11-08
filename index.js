@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const corsMiddleware = require("./src/middlewares/corsMiddleware");
 
+
 // Middlewares globais
 app.use(express.json());
 app.use(corsMiddleware);
@@ -11,6 +12,7 @@ app.use(corsMiddleware);
 app.use(require("./src/routes/authRoutes"));
 app.use(require("./src/routes/funcionariosRoutes"));
 app.use(require("./src/routes/skillsRoutes"));
+app.use(require("./src/routes/areasRoutes"))
 
 // Exporta para Firebase Functions
 exports.app = functions.https.onRequest(app);

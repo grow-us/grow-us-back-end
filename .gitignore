@@ -27,3 +27,4 @@ dist-ssr
 #credencias do projeto
 ca.pem
 .env
+service-account-firebase.json
