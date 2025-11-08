@@ -24,5 +24,6 @@ dist-ssr
 *.sw?
 
 
-#credencias do SQL
+#credencias do projeto
 ca.pem
+.env
