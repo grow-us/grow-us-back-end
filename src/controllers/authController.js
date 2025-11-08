@@ -1,0 +1,18 @@
+const pool = require("../models/db");
+
+exports.login = async (req, res) => {
+  const { email } = req.body;
+  if (!email) return res.status(400).json({ error: "O campo email é obrigatório." });
+
+  try {
+    const [results] = await pool.execute(
+      "SELECT email, nome, perfil, cargo FROM funcionarios WHERE email = ?",
+      [email]
+    );
+    if (results.length === 0) return res.status(401).json({ error: "Usuário não encontrado." });
+    res.status(200).json(results[0]);
+  } catch (error) {
+    console.error("Erro na consulta de login:", error);
+    res.status(500).json({ error: "Erro interno no servidor." });
+  }
+};
