@@ -16,3 +16,5 @@ app.use(require("./src/routes/areasRoutes"))
 
 // Exporta para Firebase Functions
 exports.app = functions.https.onRequest(app);
+
+
