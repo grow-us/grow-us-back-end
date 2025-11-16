@@ -12,7 +12,7 @@ exports.login = async (req, res) => {
     connection = await pool.getConnection();
 
     const [results] = await connection.execute(
-      "SELECT email, nome, perfil, cargo FROM funcionarios WHERE email = ?",
+      "SELECT email, nome, perfil, cargo, sobre, carreira, objetivo FROM funcionarios WHERE email = ?",
       [email]
     );
 

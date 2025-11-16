@@ -14,6 +14,8 @@ app.use(require("./src/routes/funcionariosRoutes"));
 app.use(require("./src/routes/skillsRoutes"));
 app.use(require("./src/routes/areasRoutes"))
 app.use(require("./src/routes/eventosRoutes"))
+app.use(require("./src/routes/postsRoutes"))
+
 
 // Exporta para Firebase Functions
 exports.app = functions.https.onRequest(app);
