@@ -62,3 +62,59 @@ exports.verificarFuncionario = async (req, res) => {
     if (connection) connection.release();
   }
 };
+
+// NOVA FUNÇÃO PARA LISTAR USUÁRIOS E STATUS DE "SEGUINDO"
+exports.listarUsuarios = async (req, res) => {
+ // 1. Pegar o email do usuário logado (quem está fazendo a requisição)
+ // Em um app real, isso viria de req.user.email (após middleware auth)
+ // Aqui, vamos pegar da query string: /usuarios?emailLogado=user@email.com
+ const { email } = req.query;
+ if (!email) {
+ return res.status(400).json({ error: "O email do usuário logado (email) é obrigatório na query." });
+ }
+
+ let connection;
+try {
+ connection = await pool.getConnection();
+
+ // 2. Query SQL com LEFT JOIN
+ // f = tabela funcionarios (todos os usuários)
+ // s = tabela seguindo (apenas as relações do usuário logado)
+ const query = `
+SELECT
+f.email,
+f.nome,
+f.perfil,
+f.cargo,
+-- Se s.id não for NULO, significa que o usuário logado (s.email)
+-- segue o funcionário (f.email = s.seguindo).
+-- (CASE WHEN s.id IS NOT NULL THEN TRUE ELSE FALSE END) AS estouSeguindo
+(s.id IS NOT NULL) AS estouSeguindo
+FROM
+ funcionarios AS f
+ LEFT JOIN
+ -- Juntamos 'seguindo' ONDE o usuário logado (s.email)
+-- está seguindo o funcionário da lista (s.seguindo = f.email)
+ seguindo AS s ON f.email = s.seguindo AND s.email = ?
+`;
+
+ // 3. Executar a query
+// O [emailLogado] substitui o '?' na query
+const [rows] = await connection.execute(query, [email]);
+
+    // O MySQL retorna 1 para TRUE e 0 para FALSE. Vamos converter para boolean.
+    const usuarios = rows.map(user => ({
+      ...user,
+      estouSeguindo: Boolean(user.estouSeguindo)
+    }));
+
+// 4. Retornar a lista
+res.status(200).json(usuarios);
+
+} catch (error) {
+console.error("Erro ao listar usuários:", error);
+ res.status(500).json({ error: "Erro interno ao listar usuários." });
+} finally {
+if (connection) connection.release();
+}
+};
