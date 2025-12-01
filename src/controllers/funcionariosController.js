@@ -1,7 +1,7 @@
 const pool = require("../models/db");
 
 exports.cadastrarFuncionario = async (req, res) => {
-  const { email, nome, perfil, cargo } = req.body;
+  const { email, nome, perfil, cargo, sobre, objetivos, carreira } = req.body;
 
   if (!email || !nome || !perfil || !cargo) {
     return res.status(400).json({ error: "Todos os campos são obrigatórios." });
@@ -13,8 +13,8 @@ exports.cadastrarFuncionario = async (req, res) => {
     await connection.beginTransaction();
 
     await connection.execute(
-      "INSERT INTO funcionarios (email, nome, perfil, cargo) VALUES (?, ?, ?, ?)",
-      [email, nome, perfil, cargo]
+      "INSERT INTO funcionarios (email, nome, perfil, cargo, sobre, objetivos, carreira) VALUES (?, ?, ?, ?, ? , ?, ?)",
+      [email, nome, perfil, cargo, sobre, objetivos, carreira]
     );
 
     await connection.commit();
@@ -46,7 +46,7 @@ exports.verificarFuncionario = async (req, res) => {
     connection = await pool.getConnection();
 
     const [rows] = await connection.execute(
-      "SELECT email, nome, perfil, cargo, sobre, carreira, objetivo FROM funcionarios WHERE email = ?",
+      "SELECT email, nome, perfil, cargo, sobre, carreira, objetivos FROM funcionarios WHERE email = ?",
       [email]
     );
 

@@ -7,6 +7,8 @@ const corsMiddleware = require("./src/middlewares/corsMiddleware");
 // Middlewares globais
 app.use(express.json());
 app.use(corsMiddleware);
+app.use(express.urlencoded({ extended: true }));
+
 
 // Rotas
 app.use(require("./src/routes/authRoutes"));

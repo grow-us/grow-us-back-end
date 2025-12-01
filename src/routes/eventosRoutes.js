@@ -1,18 +1,47 @@
 const express = require("express");
 const router = express.Router();
+
 const {
   getEventos,
   createEvento,
-  deleteEvento
-} = require("../controllers/eventosController"); 
+  deleteEvento,
+  inscrever,
+  listarInscricoes,
+  cancelarInscricao,
+  listarEmblemas
+} = require("../controllers/eventosController");
 
-// Rota para listar todos os eventos
+// ---------------------------
+// ROTAS ANTIGAS
+// ---------------------------
+
+// Listar todos os eventos
 router.get("/eventos", getEventos);
 
-// Rota para criar um novo evento
+// Criar evento
 router.post("/eventos", createEvento);
 
-// Rota para deletar um evento pelo ID
+// Deletar evento
 router.delete("/eventos/:id", deleteEvento);
+
+// ---------------------------
+// NOVAS ROTAS DE INSCRIÇÃO
+// ---------------------------
+
+// Inscrever usuário em evento
+router.post("/eventos/inscrever", inscrever);
+
+// Listar eventos em que o usuário está inscrito
+router.get("/eventos/inscricoes/:email", listarInscricoes);
+
+// Cancelar inscrição de evento
+router.delete("/eventos/inscricoes/:email", cancelarInscricao);
+
+// ---------------------------
+// ROTAS DE EMBLEMAS
+// ---------------------------
+
+// Listar emblemas do usuário
+router.get("/emblemas/:email", listarEmblemas);
 
 module.exports = router;
