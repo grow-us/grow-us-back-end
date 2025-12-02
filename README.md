@@ -30,8 +30,6 @@ https://app-zxlyzt4g3q-uc.a.run.app/cadastro
 https://app-zxlyzt4g3q-uc.a.run.app/cadastro
 
 
-Realiza o Cadastro do funcionario.
-
 
 
 **Body:**
