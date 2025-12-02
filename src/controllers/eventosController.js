@@ -117,25 +117,25 @@ const inscrever = async (req, res) => {
       {
         qtd: 1,
         titulo: "Primeiro Evento!",
-        img: "https://api-assets.clashroyale.com/playerbadges/512/3TeHoCb_VUTGDRtC3j5H-wn6e_ROJ1rhOe5w-fZzqIM.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/grow-us-1.firebasestorage.app/o/1.png?alt=media&token=8cf880f1-5807-4372-9f94-78a812af4634",
         descricao: "Participou do primeiro evento."
       },
       {
         qtd: 3,
         titulo: "Participante Ativo",
-        img: "https://api-assets.clashroyale.com/playerbadges/512/3TeHoCb_VUTGDRtC3j5H-wn6e_ROJ1rhOe5w-fZzqIM.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/grow-us-1.firebasestorage.app/o/3.png?alt=media&token=83fc8eed-4b49-44ce-92c0-aa4731433432",
         descricao: "Já participou de 3 eventos."
       },
       {
         qtd: 5,
         titulo: "Colaborador Engajado",
-        img: "https://api-assets.clashroyale.com/playerbadges/512/3TeHoCb_VUTGDRtC3j5H-wn6e_ROJ1rhOe5w-fZzqIM.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/grow-us-1.firebasestorage.app/o/5.png?alt=media&token=3cb73f93-f1d6-4fc6-ad37-21447a4b2522",
         descricao: "Participou de 5 eventos diferentes."
       },
       {
         qtd: 10,
         titulo: "Veterano de Eventos",
-        img: "https://api-assets.clashroyale.com/playerbadges/512/3TeHoCb_VUTGDRtC3j5H-wn6e_ROJ1rhOe5w-fZzqIM.png",
+        img: "https://firebasestorage.googleapis.com/v0/b/grow-us-1.firebasestorage.app/o/10.png?alt=media&token=c326e453-36a6-48cf-a519-9b8bc508dd8e",
         descricao: "Um dos grandes participantes da comunidade."
       }
     ];
