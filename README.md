@@ -27,7 +27,7 @@ https://app-zxlyzt4g3q-uc.a.run.app/cadastro
 
 ### rota POST de cadastro de evento
 
-https://app-zxlyzt4g3q-uc.a.run.app/cadastro
+https://app-zxlyzt4g3q-uc.a.run.app/evento
 
 
 
