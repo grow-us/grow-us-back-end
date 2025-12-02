@@ -6,14 +6,19 @@ Esta documentação descreve as principais rotas disponíveis na API, organizada
 
 ## 🔑 Autenticação
 
-### rota POST de cadastro de funcionario
+### Rota POST — Cadastro de Funcionário
 
+```bash
 https://app-zxlyzt4g3q-uc.a.run.app/cadastro
+```
+
+
+Esta rota é responsável por cadastrar funcionários já existentes na base da empresa.
 
 
 
 
-**Body:**
+**Body esperado:**
 ```json
 {
   "email": "usuario@growus.com",
@@ -25,14 +30,20 @@ https://app-zxlyzt4g3q-uc.a.run.app/cadastro
 ```
 
 
-### rota POST de cadastro de evento
+### rota POST de cadastro de eventos
 
+```bash
 https://app-zxlyzt4g3q-uc.a.run.app/evento
+```
+
+
+Esta rota é responsável por cadastrar futuros eventos da empresa.
 
 
 
 
-**Body:**
+
+**Body esperado:**
 ```json
 {
   "titulo": "Evento de Tecnologia",
